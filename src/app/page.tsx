@@ -1,52 +1,63 @@
 "use client"
+import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 
 const Home = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [showDetails, setShowDetails] = useState(true);
+
+  const handleToggleDetails = () => {
+    setShowDetails(!showDetails);
+  };
 
   return (
-    <div>
-      {/* Navbar */}
-      <header className="bg-gray-800 text-white">
-        <nav className="container mx-auto flex items-center justify-between p-4">
-          <h1 className="text-2xl font-bold">Pet Shop</h1>
-          <button
-            className="md:hidden text-white focus:outline-none"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
+    <div className="container mx-auto px-4">
+      <nav className="flex justify-between items-center py-4">
+        <div className="text-lg font-bold">PET SHOP</div>
+        <div className="flex space-x-4">
+        <ul className="flex space-x-4">
+                        <li>
+                            <Link href="/">
+                                <span className="cursor-pointer hover:text-gray-300">Home</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/about">
+                                <span className="cursor-pointer hover:text-gray-300">About</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/services">
+                                <span className="cursor-pointer hover:text-gray-300">Services</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/contact">
+                                <span className="cursor-pointer hover:text-gray-300">Contact</span>
+                            </Link>
+                        </li>
+                    </ul>
+        </div>
+      </nav>
+
+      <header className="text-center bg-yellow-200 p-12 rounded-lg shadow-lg">
+        <h1 className="text-3xl font-bold text-gray-800 mb-2">Everything for Your Pet</h1>
+        <p className="text-gray-700 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <Image src="/path-to-your-dog-image.jpg" alt="Happy Dog" width={250} height={250} className="mx-auto" />
+        <div className="flex justify-center space-x-4 mt-4">
+          <button onClick={handleToggleDetails} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            {showDetails ? 'Hide Details' : 'Show Details'}
           </button>
-          <ul className={`flex space-x-4 md:flex ${isOpen ? 'flex' : 'hidden'} md:space-x-4 md:static absolute bg-gray-800 w-full md:w-auto left-0 top-16 md:top-auto md:bg-transparent`}>
-            <li className="block text-center md:inline-block">
-              <Link href="/" className="block py-2 px-4 hover:bg-gray-700 md:hover:bg-transparent">Home</Link>
-            </li>
-            <li className="block text-center md:inline-block">
-              <Link href="/shop" className="block py-2 px-4 hover:bg-gray-700 md:hover:bg-transparent">Shop</Link>
-            </li>
-            <li className="block text-center md:inline-block">
-              <Link href="/cart" className="block py-2 px-4 hover:bg-gray-700 md:hover:bg-transparent">Cart</Link>
-            </li>
-          </ul>
-        </nav>
+          <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            Learn More
+          </button>
+        </div>
+        {showDetails && (
+          <div className="mt-4 text-gray-600">
+            Detailed information about pet care and products.
+          </div>
+        )}
       </header>
-
-      {/* Hero Section */}
-      <section className="text-center py-10 bg-gradient-to-b from-green-200 to-white">
-        <h1 className="text-5xl font-bold text-gray-800">Welcome to Our Pet Shop!</h1>
-        <p className="text-lg mt-4 text-gray-600">
-          Your one-stop shop for all pet needs. Discover a wide range of pet products from food to accessories.
-        </p>
-        <Link href="/shop">
-          <button className="mt-6 px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition duration-300">
-            Shop Now
-          </button>
-        </Link>
-      </section>
-
-      {/* Additional content can go here */}
     </div>
   );
 };
