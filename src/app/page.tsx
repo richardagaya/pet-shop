@@ -10,6 +10,7 @@ const Home = () => {
     setShowDetails(!showDetails);
   };
 
+
   return (
     <div className="container mx-auto px-4">
       <nav className="flex justify-between items-center py-4">
@@ -43,7 +44,7 @@ const Home = () => {
       <header className="text-center bg-yellow-200 p-12 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold text-gray-800 mb-2">Everything for Your Pet</h1>
         <p className="text-gray-700 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <Image src="/path-to-your-dog-image.jpg" alt="Happy Dog" width={250} height={250} className="mx-auto" />
+        <Image src="/hero.png" alt="Happy Dog" width={250} height={250} className="mx-auto" />
         <div className="flex justify-center space-x-4 mt-4">
           <button onClick={handleToggleDetails} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             {showDetails ? 'Hide Details' : 'Show Details'}
