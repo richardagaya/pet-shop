@@ -10,7 +10,6 @@ const Home = () => {
     setShowDetails(!showDetails);
   };
 
-
   return (
     <div className="container mx-auto px-4">
       <nav className="flex justify-between items-center py-4">
